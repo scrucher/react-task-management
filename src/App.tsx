@@ -1,5 +1,5 @@
 import  React from 'react';
-import TaskApi from './api/task';
+//import TaskApi from './api/task';
 import { TaskApp } from './components/tasks.app';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Login } from './components/login.component';
@@ -10,23 +10,21 @@ function App() {
 //  if (!token){
 //    return <Login setToken={setToken} />
 //  }
-const data = async () => await TaskApi.getAll();
-console.log(data());
   return (
     <div>
-    <BrowserRouter>
-    <Switch>
-      <Route exact path="/" component= {App}>
-      <TaskApp />
-      </Route>
-      <Route exact path="/login" component={Login} >
-        <Login />
-      </Route>
-      <Route exact path="/signup" component= {SignUp}>
-        <SignUp />
-      </Route>
-    </Switch>
-  </BrowserRouter>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component= {App}>
+            <TaskApp />
+          </Route>
+          <Route exact path="/login" component={Login} >
+            <Login />
+          </Route>
+          <Route exact path="/signup" component= {SignUp}>
+            <SignUp />
+          </Route>
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
