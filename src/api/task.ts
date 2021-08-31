@@ -8,21 +8,23 @@ class TaskApi{
         const resp = await fetch('http://localhost:8000/todo/', {
             method: 'GET',
         });
-        const data = await resp.json();
+        const data = await resp.json().then (res => { return res})
+        ;
+        console.log(data);
         return data;
 
     }
     public static async creatTask(createTaskDto: CreateTaskDto):Promise<any>{
-      const {title, description} = createTaskDto;
-      const resp = await fetch('http://localhost:8000/todo', {
+      const {title, body} = createTaskDto;
+      const resp = await fetch('http://localhost:8000/todo/', {
           method:'POST',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({title, description})
+          body: JSON.stringify({title, body})
       });
-      const data = await resp.json;
-      return data;
+      const res = await resp.json();
+      return res;
     }
     
     public static async loginUser(loginDto: LoginDto):Promise<any> {
